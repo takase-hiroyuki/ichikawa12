@@ -2,14 +2,14 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>市川一丁目第二町会</title>
-</head>
+    <link rel="stylesheet" href="style.css"> </head>
 <body>
     <h1>お知らせ一覧</h1>
     <div id="news-list">読み込み中...</div>
 
     <script>
-        // ここの2箇所を、メモした内容に書き換えてください
         const ENDPOINT = "https://ichikawa12.microcms.io/api/v1/news";
         const API_KEY = "dTdnQ20wXsKA1HB910ZbaODNqnWzKMdoZJF1";
 
@@ -19,16 +19,11 @@
         .then(res => res.json())
         .then(data => {
             const list = data.contents.map(item => `
-                <div style="border-bottom: 1px solid #ccc; margin-bottom: 20px;">
-                    <h2>${item.title}</h2>
+                <div class="news-item"> <h2>${item.title}</h2>
                     <div>${item.content}</div>
                 </div>
             `).join("");
             document.getElementById("news-list").innerHTML = list;
-        })
-        .catch(err => {
-            document.getElementById("news-list").innerHTML = "エラーが発生しました。";
-            console.error(err);
         });
     </script>
 </body>
