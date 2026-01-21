@@ -2,11 +2,14 @@ backend:
   name: git-gateway
   branch: main
 
+# あなたのサイトのURLを明示的に指定します
+site_url: https://ichikawa12.netlify.app
+
 media_folder: "images"
 public_folder: "/images"
 
 collections:
-  - name: "blog"
+  - name: "otayori"
     label: "お便り"
     folder: "content/otayori"
     create: true
