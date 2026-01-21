@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地図・アクセス - 市川一丁目第二町会</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html">お知らせ</a> | 
+        <a href="map.html">地図</a>
+    </nav>
+    
+    <div id="map-content">読み込み中...</div>
+
+    <script>
+        // 地図用のエンドポイントURL (最後が /map になります)
+        const ENDPOINT = "https://ichikawa12.microcms.io/api/v1/map";
+        const API_KEY = "dTdnQ20wXsKA1HB910ZbaODNqnWzKMdoZJF1";
+
+        fetch(ENDPOINT, {
+            headers: { "X-MICROCMS-API-KEY": API_KEY }
+        })
+        .then(res => res.json())
+        .then(data => {
+            // microCMSから届いたデータを画面に表示します
+            document.getElementById("map-content").innerHTML = `
+                <h1>${data.title}</h1>
+                <img src="${data.map_image.url}" alt="地図" style="max-width:100%; height:auto; margin-bottom:20px;">
+                <div class="description">
+                    ${data.description}
+                </div>
+            `;
+        })
+        .catch(err => {
+            document.getElementById("map-content").innerHTML = "エラーが発生しました。";
+            console.error(err);
+        });
+    </script>
+</body>
+</html>
