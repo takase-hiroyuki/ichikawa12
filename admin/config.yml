@@ -1,5 +1,6 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: takase-hiroyuki/ichikawa12
   branch: main
 
 # あなたのサイトのURLを明示的に指定します
