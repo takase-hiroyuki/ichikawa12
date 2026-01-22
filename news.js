@@ -1,5 +1,5 @@
+// お知らせ詳細表示処理（数字から始まるIDに対応した安全版）
 async function loadNews() {
-    // URLの末尾に時刻を追加してキャッシュを回避
     const ENDPOINT = "https://ichikawa12.microcms.io/api/v1/news?_t=" + new Date().getTime();
     const API_KEY = "dTdnQ20wXsKA1HB910ZbaODNqnWzKMdoZJF1";
 
@@ -31,9 +31,14 @@ async function loadNews() {
         
         document.getElementById("news-list").innerHTML = list;
 
+        // 【修正ポイント】ハッシュ（#）の処理を安全な方法に変更
         const hash = window.location.hash;
         if (hash) {
-            const targetElement = document.querySelector(hash);
+            // # を除いた ID 文字列を取得
+            const id = hash.substring(1);
+            // querySelector(#数字) はエラーになるため、getElementById を使用
+            const targetElement = document.getElementById(id);
+            
             if (targetElement) {
                 requestAnimationFrame(() => {
                     targetElement.scrollIntoView({ behavior: 'smooth' });
@@ -42,7 +47,6 @@ async function loadNews() {
         }
 
     } catch (err) {
-        // エラーの内容を画面に出して原因を特定しやすくする
         document.getElementById("news-list").innerHTML = "読み込みに失敗しました: " + err.message;
         console.error(err);
     }
