@@ -63,3 +63,32 @@ img {
   text-decoration: none;
 }
 
+/* お知らせ一覧ページ（news-list）のデザイン */
+.news-index-list {
+  list-style-type: none; /* リストの点を消す */
+  padding: 0;
+}
+
+.news-index-list li {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.news-index-list a {
+  color: #005bac;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.news-index-list a:hover {
+  text-decoration: underline; /* マウスを乗せた時に下線を出す */
+}
+
+/* リンクで飛んできた（ターゲットになった）記事を強調する（お好みで） */
+.news-item:target {
+  border: 2px solid #005bac;
+  background-color: #f0f7ff;
+}
+
