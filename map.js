@@ -11,7 +11,7 @@ fetch(ENDPOINT, {
     document.getElementById("map-content").innerHTML = `
         <h1>${data.title}</h1>
         <div class="map-image" style="margin-bottom: 20px;">
-            <img src="${data.image.url}" alt="町会地図" style="max-width: 100%; height: auto; border: 1px solid #ccc; border-radius: 8px;">
+            <img src="${data.map_image.url}" alt="町会地図" style="max-width: 100%; height: auto; border: 1px solid #ccc; border-radius: 8px;">
         </div>
         <div class="map-description">
             ${data.description}
