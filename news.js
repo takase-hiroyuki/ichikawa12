@@ -1,16 +1,15 @@
-// お知らせ詳細表示処理（async/await を利用した確実なスクロール対応）
 async function loadNews() {
-    const ENDPOINT = "https://ichikawa12.microcms.io/api/v1/news";
+    // URLの末尾に時刻を追加してキャッシュを回避
+    const ENDPOINT = "https://ichikawa12.microcms.io/api/v1/news?_t=" + new Date().getTime();
     const API_KEY = "dTdnQ20wXsKA1HB910ZbaODNqnWzKMdoZJF1";
 
     try {
-        // 1. データの取得が終わるまで待機 (await)
         const res = await fetch(ENDPOINT, {
             headers: { "X-MICROCMS-API-KEY": API_KEY }
         });
+        if (!res.ok) throw new Error('通信エラーが発生しました');
         const data = await res.json();
 
-        // 2. HTMLの組み立て
         const list = data.contents.map(item => {
             let imagesHtml = "";
             if (item.pictures && Array.isArray(item.pictures)) {
@@ -30,15 +29,12 @@ async function loadNews() {
             `;
         }).join("");
         
-        // 3. 画面への描画を完了させる
         document.getElementById("news-list").innerHTML = list;
 
-        // 4. 描画が終わったので、URLのハッシュ（#）を見て移動する
         const hash = window.location.hash;
         if (hash) {
             const targetElement = document.querySelector(hash);
             if (targetElement) {
-                // ブラウザが要素を認識できるよう、ごくわずかに待機してからスクロール
                 requestAnimationFrame(() => {
                     targetElement.scrollIntoView({ behavior: 'smooth' });
                 });
@@ -46,10 +42,9 @@ async function loadNews() {
         }
 
     } catch (err) {
-        document.getElementById("news-list").innerHTML = "お知らせの読み込みに失敗しました。";
+        // エラーの内容を画面に出して原因を特定しやすくする
+        document.getElementById("news-list").innerHTML = "読み込みに失敗しました: " + err.message;
         console.error(err);
     }
 }
-
-// 実行
 loadNews();
