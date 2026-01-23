@@ -34,6 +34,11 @@ async function loadNews() {
         // HTMLの組み立て
         document.getElementById("news-list").innerHTML = `
             <article class="news-item">
+                <div class="news-navigation">
+                    ${prevId ? `<a href="#${prevId}" class="nav-button" onclick="setTimeout(()=>location.reload(),10)">← 前のお知らせ</a>` : `<span class="nav-button disabled">← 前のお知らせ</span>`}
+                    ${nextId ? `<a href="#${nextId}" class="nav-button" onclick="setTimeout(()=>location.reload(),10)">次のお知らせ →</a>` : `<span class="nav-button disabled">次のお知らせ →</span>`}
+                </div>
+
                 <h1>${item.title}</h1>
                 <div class="news-content">${item.content}</div>
                 <div class="news-images">${imagesHtml}</div>
