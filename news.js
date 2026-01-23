@@ -1,6 +1,8 @@
 // 1件ずつ表示し、前後へ移動できる詳細ページ処理
 async function loadNews() {
-    const ENDPOINT = "https://ichikawa12.microcms.io/api/v1/news";
+//    const ENDPOINT = "https://ichikawa12.microcms.io/api/v1/news?fields=id,title&limit=100";
+    const ENDPOINT = "https://ichikawa12.microcms.io/api/v1/news?limit=100";
+//    const ENDPOINT = "https://ichikawa12.microcms.io/api/v1/news";
     const API_KEY = "dTdnQ20wXsKA1HB910ZbaODNqnWzKMdoZJF1";
 
     try {
