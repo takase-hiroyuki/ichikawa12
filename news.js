@@ -63,6 +63,11 @@ async function loadNews() {
 }
 
 // URLの#が切り替わった時に再読み込みして表示を更新する設定
-window.addEventListener('hashchange', () => location.reload());
+// URLの#が切り替わったことを検知したとき、コンソールに文字を出す
+window.addEventListener('hashchange', () => {
+    console.log("URLのハッシュが変わったことを検知しました！再読み込みします。");
+    location.reload();
+});
+// window.addEventListener('hashchange', () => location.reload());
 
 loadNews();
