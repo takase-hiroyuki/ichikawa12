@@ -37,12 +37,8 @@ async function loadNews() {
         document.getElementById("news-list").innerHTML = `
             <article class="news-item">
                 <div class="news-navigation top">
-                    ${prevId ? 
-                      `<a href="#${prevId}" class="nav-button">新しい方</a>`
-                      : `<span class="nav-button disabled">←新しい方</span>`}
-                    ${nextId ? 
-                      `<a href="#${nextId}" class="nav-button">古い方→</a>`
-                      : `<span class="nav-button disabled">古い方→</span>`}
+                    ${prevId ? `<a href="#${prevId}" class="nav-button">新しい方</a>` : `<span class="nav-button disabled">新しい方</span>`}
+                    ${nextId ? `<a href="#${nextId}" class="nav-button">古い方→</a>` : `<span class="nav-button disabled">古い方</span>`}
                 </div>
 
                 <h1>${item.title}</h1>
@@ -50,8 +46,8 @@ async function loadNews() {
                 <div class="news-images">${imagesHtml}</div>
                 
                 <div class="news-navigation bottom">
-                    ${prevId ? `<a href="#${prevId}" class="nav-button" onclick="setTimeout(()=>location.reload(),10)">新しい方</a>` : `<span class="nav-button disabled">新しい方</span>`}
-                    ${nextId ? `<a href="#${nextId}" class="nav-button" onclick="setTimeout(()=>location.reload(),10)">古い方</a>` : `<span class="nav-button disabled">古い方</span>`}
+                    ${prevId ? `<a href="#${prevId}" class="nav-button">新しい方</a>` : `<span class="nav-button disabled">新しい方</span>`}
+                    ${nextId ? `<a href="#${nextId}" class="nav-button">古い方→</a>` : `<span class="nav-button disabled">古い方</span>`}
                 </div>
             </article>
         `;
