@@ -1,5 +1,6 @@
 // お知らせ一覧ページ専用の取得処理
-const ENDPOINT = "https://ichikawa12.microcms.io/api/v1/news?fields=id,title";
+const ENDPOINT = "https://ichikawa12.microcms.io/api/v1/news?limit=100";
+// const ENDPOINT = "https://ichikawa12.microcms.io/api/v1/news?fields=id,title";
 const API_KEY = "dTdnQ20wXsKA1HB910ZbaODNqnWzKMdoZJF1";
 
 fetch(ENDPOINT, {
