@@ -47,7 +47,7 @@ async function loadNews() {
                 
                 <div class="news-navigation bottom">
                     ${prevId ? `<a href="#${prevId}" class="nav-button">新しい方</a>` : `<span class="nav-button disabled">新しい方</span>`}
-                    ${nextId ? `<a href="#${nextId}" class="nav-button">古い方→</a>` : `<span class="nav-button disabled">古い方</span>`}
+                    ${nextId ? `<a href="#${nextId}" class="nav-button">古い方</a>` : `<span class="nav-button disabled">古い方</span>`}
                 </div>
             </article>
         `;
