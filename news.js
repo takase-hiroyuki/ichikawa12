@@ -31,10 +31,10 @@ async function loadNews() {
         const prevId = currentIndex > 0 ? articles[currentIndex - 1].id : null;
         const nextId = currentIndex < articles.length - 1 ? articles[currentIndex + 1].id : null;
 
-        // HTMLの組み立て
+// HTMLの組み立て
         document.getElementById("news-list").innerHTML = `
             <article class="news-item">
-                <div class="news-navigation">
+                <div class="news-navigation top">
                     ${prevId ? `<a href="#${prevId}" class="nav-button" onclick="setTimeout(()=>location.reload(),10)">← 前のお知らせ</a>` : `<span class="nav-button disabled">← 前のお知らせ</span>`}
                     ${nextId ? `<a href="#${nextId}" class="nav-button" onclick="setTimeout(()=>location.reload(),10)">次のお知らせ →</a>` : `<span class="nav-button disabled">次のお知らせ →</span>`}
                 </div>
@@ -43,7 +43,7 @@ async function loadNews() {
                 <div class="news-content">${item.content}</div>
                 <div class="news-images">${imagesHtml}</div>
                 
-                <div class="news-navigation">
+                <div class="news-navigation bottom">
                     ${prevId ? `<a href="#${prevId}" class="nav-button" onclick="setTimeout(()=>location.reload(),10)">← 前のお知らせ</a>` : `<span class="nav-button disabled">← 前のお知らせ</span>`}
                     ${nextId ? `<a href="#${nextId}" class="nav-button" onclick="setTimeout(()=>location.reload(),10)">次のお知らせ →</a>` : `<span class="nav-button disabled">次のお知らせ →</span>`}
                 </div>
