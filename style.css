@@ -92,3 +92,27 @@ img {
   background-color: #f0f7ff;
 }
 
+/* 記事のナビゲーションボタン */
+.news-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #eee;
+}
+
+.nav-button {
+    padding: 10px 20px;
+    background-color: #005bac;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.nav-button.disabled {
+    background-color: #ccc;
+    pointer-events: none; /* クリック不可にする */
+}
+
+
