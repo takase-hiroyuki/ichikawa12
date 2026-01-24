@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ichikawa12.vercel.app/sitemap.xml
